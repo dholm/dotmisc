@@ -1,0 +1,27 @@
+.gitattributes  export-ignore
+.gitignore      export-ignore
+
+*.txt           text
+*.text          text
+*.C             text trailing-space space-before-tab -indent-with-non-tab
+*.rst           text trailing-space space-before-tab -indent-with-non-tab
+*.clj           text trailing-space space-before-tab -indent-with-non-tab
+
+*.c             text diff=cpp trailing-space space-before-tab -indent-with-non-tab
+*.cpp           text diff=cpp trailing-space space-before-tab -indent-with-non-tab
+*.h             text diff=cpp trailing-space space-before-tab -indent-with-non-tab
+*.hpp           text diff=cpp trailing-space space-before-tab -indent-with-non-tab
+*.py            text diff=python trailing-space space-before-tab -indent-with-non-tab
+*.tex           text diff=tex
+*.java          text diff=java trailing-space space-before-tab -indent-with-non-tab
+*.pl            text diff=perl trailing-space space-before-tab -indent-with-non-tab
+*.php           text diff=php
+*.rb            text diff=ruby trailing-space space-before-tab -indent-with-non-tab
+
+*.sh            eol=lf
+
+*.jpg           binary
+*.png           binary
+*.gif           binary
+*.tiff          binary
+

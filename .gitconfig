@@ -1,0 +1,51 @@
+[color]
+    ui = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[format]
+    pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+
+[mergetool]
+    prompt = false
+[mergetool "vim-fugitive"]
+    cmd="vim -f -c 'Gdiff' $MERGED"
+    keepbackup = false
+[merge]
+    summary = true
+    verbosity = 1
+    tool = vim-fugitive
+    stat = true
+
+[branch]
+    autosetupmerge = true
+
+[push]
+    default = tracking
+
+[core]
+    autocrlf = false
+    editor = vim
+    whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
+    preloadindex = true
+
+[advice]
+    statusHints = false
+
+[diff]
+    mnemonicprefix = true
+    renames = true
+    renamelimit = 3000
+
+[rerere]
+    enabled = true
+
+[include]
+    path = .gitconfig.local
