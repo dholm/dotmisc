@@ -1,0 +1,23 @@
+###
+# Core gitignore file
+
+
+###
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+###
+# Vim
+*.swp
+
+
+###
+# ÒSX
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes

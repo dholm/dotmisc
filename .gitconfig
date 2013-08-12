@@ -35,6 +35,7 @@
     editor = "vim --noplugin"
     whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
     preloadindex = true
+    excludesfile = ~/.gitignore.core
 
 [advice]
     statusHints = false
