@@ -131,7 +131,12 @@ LP_ENABLE_SSH_COLORS=1
 LP_DISABLED_VCS_PATH=""
 
 # Load local configuration if it exists.
-LP_LOCAL_SETTINGS="$(dirname $0)/$(basename $0).local"
+if [ -n "$BASH_VERSION" ]
+then
+    LP_LOCAL_SETTINGS="$(dirname ${BASH_SOURCE[0]})/$(basename ${BASH_SOURCE[0]}).local"
+else
+    LP_LOCAL_SETTINGS="$(dirname $0)/$(basename $0).local"
+fi
 [ -r "$LP_LOCAL_SETTINGS" ] && . "$LP_LOCAL_SETTINGS"
 
 # vim: set et sts=4 sw=4 tw=120 ft=sh:
