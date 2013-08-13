@@ -15,6 +15,18 @@
 
 
 ###
+# GNU Global
+GPATH
+GRTAGS
+GTAGS
+
+
+###
+# [ce]tags
+TAGS
+
+
+###
 # ÒSX
 .DS_Store
 .AppleDouble
