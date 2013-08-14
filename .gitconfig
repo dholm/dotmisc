@@ -48,5 +48,8 @@
 [rerere]
     enabled = true
 
+[alias]
+    logg = log --graph --abbrev-commit --decorate --date=relative
+
 [include]
     path = .gitconfig.local
