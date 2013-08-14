@@ -51,6 +51,7 @@
 [alias]
     logg = log --graph --abbrev-commit --decorate --date=relative
     logs = log --graph --abbrev-commit --decorate --date=relative --stat
+    logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
 
 [include]
     path = .gitconfig.local
