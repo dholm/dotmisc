@@ -1,5 +1,6 @@
 [color]
     ui = auto
+    diff = auto
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -41,9 +42,12 @@
     statusHints = false
 
 [diff]
+    tool = vimdiff
     mnemonicprefix = true
     renames = true
     renamelimit = 3000
+[difftool]
+    prompt = false
 
 [rerere]
     enabled = true
