@@ -32,6 +32,7 @@
     default = tracking
 
 [core]
+    pager = less
     autocrlf = false
     editor = "vim --noplugin"
     whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
