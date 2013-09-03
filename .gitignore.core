@@ -15,10 +15,15 @@
 
 
 ###
-# GNU Global
+# GNU GLOBAL
 GPATH
 GRTAGS
 GTAGS
+
+
+###
+# GNU idutils
+ID
 
 
 ###
