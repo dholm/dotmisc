@@ -15,6 +15,11 @@
 
 
 ###
+# CScope
+cscope.out
+
+
+###
 # GNU GLOBAL
 GPATH
 GRTAGS
