@@ -19,6 +19,7 @@
 GPATH
 GRTAGS
 GTAGS
+GSYMS
 
 
 ###
@@ -29,6 +30,11 @@ ID
 ###
 # [ce]tags
 TAGS
+
+
+###
+# CScope
+cscope.out
 
 
 ###
