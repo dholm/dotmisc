@@ -41,7 +41,7 @@ end
 # Functions
 
 define offsetof
-    print (int)&(((struct $arg0 *)0)->$arg1 - (char*)0)
+    print (int)&((struct $arg0 *)0)->$arg1
 end
 document offsetof
 Show the offset of MEMBER into STRUCTURE.
