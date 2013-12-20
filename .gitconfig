@@ -22,7 +22,7 @@
 [merge]
     summary = true
     verbosity = 1
-    tool = vim-fugitive
+    tools = ediff
     stat = true
 
 [branch]
@@ -43,7 +43,8 @@
     statusHints = false
 
 [diff]
-    tool = vimdiff
+    tool = ediff
+    guitool = ediff
     mnemonicprefix = true
     renames = true
     renamelimit = 3000
@@ -60,3 +61,9 @@
 
 [include]
     path = .gitconfig.local
+
+[difftool "ediff"]
+    cmd = $HOME/.dotfiles/misc/bin/ediff.sh "$LOCAL" "$REMOTE" "$MERGED"
+[mergetool "ediff"]
+    cmd = $HOME/.dotfiles/misc/bin/ediff.sh "$LOCAL" "$REMOTE" "$MERGED" "$BASE"
+    trustExitCode = true
