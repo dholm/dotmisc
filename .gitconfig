@@ -15,7 +15,7 @@
     pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 
 [mergetool]
-    prompt = false
+    prompt = no
 [mergetool "vim-fugitive"]
     cmd="vim -f -c 'Gdiff' $MERGED"
     keepbackup = false
@@ -58,6 +58,8 @@
     logg = log --graph --abbrev-commit --decorate --date=relative
     logs = log --graph --abbrev-commit --decorate --date=relative --stat
     logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
+    root = rev-parse --show-toplevel
+    head = rev-list -n1 --abbrev-commit HEAD
 
 [include]
     path = .gitconfig.local
