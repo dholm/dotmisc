@@ -16,13 +16,16 @@
 
 [mergetool]
     prompt = no
-[mergetool "vim-fugitive"]
+[mergetool "vim"]
     cmd="vim -f -c 'Gdiff' $MERGED"
     keepbackup = false
+[mergetool "emacs"]
+    cmd = /usr/bin/env LOCAL=$LOCAL REMOTE=$REMOTE BASE=$BASE MERGED=$MERGED \
+	emacs -Q -nw -l ~/.emacs.d/mergetool.el
 [merge]
     summary = true
     verbosity = 1
-    tools = ediff
+    tool = "emacs"
     stat = true
 
 [branch]
