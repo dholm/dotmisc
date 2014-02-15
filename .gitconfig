@@ -17,11 +17,11 @@
 [mergetool]
     prompt = no
 [mergetool "vim"]
-    cmd="vim -f -c 'Gdiff' $MERGED"
+    cmd = vim -f -c 'Gdiff' $MERGED
     keepbackup = false
 [mergetool "emacs"]
     cmd = /usr/bin/env LOCAL=$LOCAL REMOTE=$REMOTE BASE=$BASE MERGED=$MERGED \
-	emacs -Q -nw -l ~/.emacs.d/mergetool.el
+	emacs -Q -nw -l ~/.emacs.d/setup/mergetool.el
 [merge]
     summary = true
     verbosity = 1
@@ -45,9 +45,12 @@
 [advice]
     statusHints = false
 
+[difftool]
+    prompt = no
+[difftool "emacs"]
+    cmd = /usr/bin/env LOCAL=$LOCAL REMOTE=$REMOTE \
+	emacs -Q -nw -l ~/.emacs.d/setup/difftool.el
 [diff]
-    tool = ediff
-    guitool = ediff
     mnemonicprefix = true
     renames = true
     renamelimit = 3000
