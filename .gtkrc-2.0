@@ -17,7 +17,7 @@ gtk-xft-rgba = rgb
 # Monospace fonts in Pidgin
 style "imhtml-fix"
 {
-    font_name = "Deja Vu Sans Mono 8"
+    font_name = "Meslo LG S DZ Bold 8"
 }
 
 # Conversation entry box--where you type.
