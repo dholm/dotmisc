@@ -1,5 +1,36 @@
 $include /etc/inputrc
 
+# Use Emacs bindings.
+set editing-mode emacs
+
+# Show current editing mode in prompt.
+set show-mode-in-prompt on
+
+# Unlimited history.
+set history-size -1
+
+# Append slash even on symbolical links to directories.
+set mark-symlinked-directories on
+
+# Show menu of common prefix completions.
+set menu-complete-display-prefix on
+
+# List multiple matches immediately instead of ringing bell.
 set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Item limit after which the user won't be queried for about listing.
 set completion-query-items 1000
-set expand-tilde off
+
+# Append file type when listing completions.
+set visible-stats on
+
+# Use a visible bell, rather than audible.
+set bell-style visible
+
+# Separate file types by color from $LS_COLORS.
+set colored-stats on
+
+# Local Variables:
+# mode: conf
+# End:
