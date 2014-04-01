@@ -65,6 +65,11 @@
     logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
     root = rev-parse --show-toplevel
     head = rev-list -n1 --abbrev-commit HEAD
+    # Commands that ignore changes to whitespace.
+    shw  = show --ignore-all-space
+    dff  = diff --ignore-all-space
+    mrg  = merge -Xignore-space-at-eol
+    rbs  = rebase -Xignore-space-at-eol
 
 [include]
     path = .gitconfig.local
