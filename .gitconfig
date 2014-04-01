@@ -59,6 +59,7 @@
     enabled = true
 
 [alias]
+    logb = log --first-parent
     logg = log --graph --abbrev-commit --decorate --date=relative
     logs = log --graph --abbrev-commit --decorate --date=relative --stat
     logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
