@@ -34,6 +34,13 @@ set output-radix 10
 if $PYTHON_SUPPORT == 1
     # Show stack traces from Python instead of just an error message
     set python print-stack full
+
+    # Install (void)walker.
+    python
+import os.path
+sys.path.insert(0, os.path.expanduser('~/.local/libexec/gdb/voidwalker'))
+from voidwalker import voidwalker
+    end
 end
 
 

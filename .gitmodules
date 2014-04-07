@@ -1,0 +1,4 @@
+[submodule ".local/libexec/gdb/voidwalker"]
+	path = .local/libexec/gdb/voidwalker
+	url = https://github.com/dholm/voidwalker.git
+	branch = master
