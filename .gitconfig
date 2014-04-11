@@ -65,6 +65,7 @@
     logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
     root = rev-parse --show-toplevel
     head = rev-list -n1 --abbrev-commit HEAD
+    unmerge = checkout -m
     # Commands that ignore changes to whitespace.
     shw  = show --ignore-all-space
     dff  = diff --ignore-all-space
