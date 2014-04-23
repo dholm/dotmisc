@@ -41,6 +41,7 @@
        pattern = pattern)
 }
 
+
 # Attach the new environment.
 attach(.env)
 
@@ -73,15 +74,53 @@ if (.Platform$GUI == "X11" && Sys.info()[1] == "Darwin") {
 # Add R-Forge repo.
 .env$addrepo("http://r-forge.r-project.org")
 # Don't ask which repo to use when installing a package.
-options(repos=Filter(function(x) x != "@CRAN@", getOption("repos")))
+options(repos = Filter(function(x) x != "@CRAN@", getOption("repos")))
 
 
-if (!any(commandArgs() == "--no-readline") && interactive()) {
-    if (Sys.getenv("R_HISTFILE") == "") {
-        history_path = file.path(Sys.getenv("HOME"), ".Rhistory")
-        Sys.setenv(R_HISTFILE = history_path)
-    }
+##
+# Default packages.
+.env$packages <- c(# For setting the correct terminal width.
+                   "setwidth")
+
+
+##
+# Interactive initialization.
+if (interactive()) {
+    local({
+        require(utils, quietly = TRUE)
+
+        # Set up user library path.
+        lib.path <- Sys.getenv("R_LIBS_USER")
+        if (lib.path == "") {
+            lib.path <- file.path(Sys.getenv("HOME"), ".local", "lib", "R",
+                                  "site-packages")
+            Sys.setenv(R_LIBS_USER = lib.path)
+        }
+        if (!file.exists(lib.path)) {
+            dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE,
+                       mode = "755", showWarnings = FALSE)
+        }
+
+        # Install missing packages.
+        need.filter <- function(x) !x %in% rownames(installed.packages())
+        need.packages <- Filter(need.filter, .env$packages)
+        if (length(need.packages)) {
+            install.packages(need.packages)
+        }
+
+        if (!any(commandArgs() == "--no-readline")) {
+            # Set default path to history, if unset.
+            if (Sys.getenv("R_HISTFILE") == "") {
+                history.path <- file.path(Sys.getenv("HOME"), ".Rhistory")
+                Sys.setenv(R_HISTFILE = history.path)
+            }
+        }
+    })
+
+    # Fix terminal width.
+    library("setwidth")
 }
+
 
 ##
 # Initialize R session.
@@ -93,12 +132,16 @@ if (!any(commandArgs() == "--no-readline") && interactive()) {
 
 # Clean up R session.
 .Last <- function() {
-    # Save command history.
-    if (!any(commandArgs() == "--no-readline") && interactive()) {
+    if (interactive()) {
         require(utils)
-        try(savehistory(Sys.getenv("R_HISTFILE")))
+
+        # Save command history.
+        if (!any(commandArgs() == "--no-readline")) {
+            try(savehistory(Sys.getenv("R_HISTFILE")))
+        }
     }
 }
+
 
 # Local Variables:
 # mode: R
