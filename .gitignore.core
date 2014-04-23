@@ -45,6 +45,11 @@
 
 
 ###
+# Python
+/*.pyc
+
+
+###
 # ÒSX
 /.DS_Store
 /.AppleDouble
