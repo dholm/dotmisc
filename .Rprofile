@@ -76,6 +76,13 @@ if (.Platform$GUI == "X11" && Sys.info()[1] == "Darwin") {
 options(repos=Filter(function(x) x != "@CRAN@", getOption("repos")))
 
 
+if (!any(commandArgs() == "--no-readline") && interactive()) {
+    if (Sys.getenv("R_HISTFILE") == "") {
+        history_path = file.path(Sys.getenv("HOME"), ".Rhistory")
+        Sys.setenv(R_HISTFILE = history_path)
+    }
+}
+
 ##
 # Initialize R session.
 .First <- function() {
