@@ -85,7 +85,7 @@ options(repos = Filter(function(x) x != "@CRAN@", getOption("repos")))
 
 
 ##
-# Interactive initialization.
+# Initialization of interactive mode.
 if (interactive()) {
     local({
         require(utils, quietly = TRUE)
@@ -120,6 +120,12 @@ if (interactive()) {
 
     # Fix terminal width.
     library("setwidth")
+}
+
+
+# Don't ask about saving workspace.
+q <- function (save = "no", ...) {
+    quit(save = save, ...)
 }
 
 
