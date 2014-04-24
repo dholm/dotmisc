@@ -28,8 +28,9 @@
 # Read data on clipboard.
 .env$read.cb <- function(...) {
     ismac <- Sys.info()[1] == "Darwin"
-    if (!ismac) read.table(file = "clipboard", ...)
-    else read.table(pipe("pbpaste"), ...)
+    if (ismac) read.table(pipe("pbpaste"), ...)
+    else if (.Platform$GUI == "X11") read.table(pipe("xclip -o"), ...)
+    else read.table(file = "clipboard", ...)
 }
 
 ## Stolen from: https://gist.github.com/stephenturner/5700920
