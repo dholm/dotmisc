@@ -81,7 +81,9 @@ options(repos = Filter(function(x) x != "@CRAN@", getOption("repos")))
 ##
 # Default packages.
 .env$packages <- c(# For setting the correct terminal width.
-                   "setwidth")
+                   "setwidth",
+                   # Doxygen-like documentation system for R.
+                   "roxygen2")
 
 
 ##
