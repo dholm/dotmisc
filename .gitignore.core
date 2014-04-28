@@ -6,53 +6,49 @@
 # Emacs
 *~
 \#*\#
-/.\#*
+.\#*
+
 # Flycheck
-/flycheck_*
+flycheck_*
 
 
 ###
 # Vim
-/*.swp
+*.swp
 
 
 ###
 # CScope
-/cscope.out
+cscope.out
 
 
 ###
 # GNU GLOBAL
-/GPATH
-/GRTAGS
-/GTAGS
-/GSYMS
+GPATH
+GRTAGS
+GTAGS
+GSYMS
 
 
 ###
 # GNU idutils
-/ID
+ID
 
 
 ###
 # [ce]tags
-/TAGS
-
-
-###
-# CScope
-/cscope.out
+TAGS
 
 
 ###
 # Python
-/*.pyc
+*.pyc
 
 
 ###
 # ÒSX
-/.DS_Store
-/.AppleDouble
-/.LSOverride
-/.Spotlight-V100
-/.Trashes
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
