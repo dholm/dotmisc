@@ -1,0 +1,41 @@
+def setup_history():
+    import atexit
+    import os
+    import readline
+
+    history_path = os.path.expanduser('~/.pyhistory')
+
+    if os.path.exists(history_path):
+        readline.read_history_file(history_path)
+
+    atexit.register(readline.write_history_file, history_path)
+
+
+def setup_completion():
+    import readline
+    import rlcompleter
+
+    # Insert tabs at beginning of line, otherwise complete at point.
+    class TabCompleter(rlcompleter.Completer):
+        def complete(self, text, state):
+            if text is None:
+                return ('    ', None)[state]
+            else:
+                return super(TabCompleter, self).complete(self, text, state)
+
+    readline.set_completer(TabCompleter().complete)
+    if 'libedit' in readline.__doc__:
+        readline.parse_and_bind("bind ^I rl_complete")
+    else:
+        readline.parse_and_bind("tab: complete")
+
+
+setup_history()
+setup_completion()
+
+del setup_completion
+del setup_history
+
+# Local Variables:
+# mode: python
+# End:
