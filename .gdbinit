@@ -1,9 +1,6 @@
 ###
 # Configuration
 
-# Control if GDB supports Python scripting
-set $PYTHON_SUPPORT = 1
-
 # Save GDB command history
 set history save on
 shell mkdir -p ~/.cache/gdb
@@ -31,18 +28,6 @@ set print asm-demangle on
 set input-radix 10
 set output-radix 10
 
-if $PYTHON_SUPPORT == 1
-    # Show stack traces from Python instead of just an error message
-    set python print-stack full
-
-    # Install (void)walker.
-    python
-import os.path
-sys.path.insert(0, os.path.expanduser('~/.local/libexec/gdb/voidwalker'))
-from voidwalker import voidwalker
-    end
-end
-
 
 ###
 # Functions
@@ -53,6 +38,28 @@ end
 document offsetof
 Show the offset of MEMBER into STRUCTURE.
 Usage: offsetof STRUCTURE MEMBER
+end
+
+define init_python
+    # Show stack traces from Python instead of just an error message
+    set python print-stack full
+end
+document init_python
+Initialize GDB's embedded Python library.
+end
+
+define load_voidwalker
+    init_python
+
+    # Install (void)walker.
+    python
+import os.path
+sys.path.insert(0, os.path.expanduser('~/.local/libexec/gdb/voidwalker'))
+from voidwalker import voidwalker
+    end
+end
+document load_voidwalker
+Load (void)walker low-level debugger.
 end
 
 
