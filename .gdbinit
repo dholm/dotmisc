@@ -28,6 +28,9 @@ set print asm-demangle on
 set input-radix 10
 set output-radix 10
 
+# Destination goes on the right.
+set disassembly-flavor intel
+
 
 ###
 # Functions
