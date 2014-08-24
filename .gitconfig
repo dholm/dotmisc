@@ -34,7 +34,7 @@
     default = tracking
 
 [core]
-    pager = "less -FRSXM +Gg"
+    pager = "less -RXMi"
     autocrlf = false
     editor = "vim --noplugin"
     whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
