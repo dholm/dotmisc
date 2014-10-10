@@ -14,6 +14,9 @@
 [format]
     pretty = format:%C(blue)%ad%C(reset) %x09%C(yellow)%h%C(green)%d%C(reset) %C(blue)%s %C(magenta) [%an]%C(reset)
 
+[grep]
+    patternType = perl
+
 [mergetool]
     prompt = no
 [mergetool "vim"]
