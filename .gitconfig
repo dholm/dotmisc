@@ -5,11 +5,12 @@
     current = yellow reverse
     local = yellow
     remote = green
+    upstream = normal bold
 [color "diff"]
     meta = yellow bold
     frag = magenta bold
-    old = red bold
-    new = green bold
+    old = red
+    new = green
 
 [format]
     pretty = format:%C(blue)%ad%C(reset) %x09%C(yellow)%h%C(green)%d%C(reset) %C(blue)%s %C(magenta) [%an]%C(reset)
