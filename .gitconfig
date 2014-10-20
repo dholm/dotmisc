@@ -63,19 +63,36 @@
     enabled = true
 
 [alias]
+    ###
+    # Help commands.
     ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias
+
+    ###
+    # Locating paths.
+    root = rev-parse --show-toplevel
+
+    ###
+    # Finding refspecs.
+    head = rev-list -n1 --abbrev-commit HEAD
+    latest-tag = describe --tags --abbrev=0
+
+    ###
+    # Reviewing history.
     logb = log --first-parent
     logg = log --graph --abbrev-commit --decorate --date=relative
     logs = log --graph --abbrev-commit --decorate --date=relative --stat
     logp = log --graph --abbrev-commit --decorate --date=relative --patch --cc -w
-    root = rev-parse --show-toplevel
-    head = rev-list -n1 --abbrev-commit HEAD
+
+    ##
+    # Common commands that ignore changes to whitespace.
+    shw = show --ignore-all-space
+    dff = diff --ignore-all-space
+    mrg = merge -Xignore-space-at-eol
+    rbs = rebase -Xignore-space-at-eol
+
+    ###
+    # Manipulating file states.
     unmerge = checkout -m
-    # Commands that ignore changes to whitespace.
-    shw  = show --ignore-all-space
-    dff  = diff --ignore-all-space
-    mrg  = merge -Xignore-space-at-eol
-    rbs  = rebase -Xignore-space-at-eol
 
 [include]
     path = .gitconfig.local
