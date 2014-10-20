@@ -93,6 +93,11 @@
     ###
     # Manipulating file states.
     unmerge = checkout -m
+    ls-assume = !git ls-files -v | grep ^h | cut -c 3-
+    assume = update-index --assume-unchanged
+    assume-all = !git st -s | awk {'print $2'} | xargs git assume
+    unassume = update-index --no-assume-unchanged
+    unassume-all = !git assumed | xargs git update-index --no-assume-unchanged
 
 [include]
     path = .gitconfig.local
