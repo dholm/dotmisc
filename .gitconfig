@@ -62,6 +62,7 @@
     enabled = true
 
 [alias]
+    ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias
     logb = log --first-parent
     logg = log --graph --abbrev-commit --decorate --date=relative
     logs = log --graph --abbrev-commit --decorate --date=relative --stat
