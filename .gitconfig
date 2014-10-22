@@ -68,8 +68,13 @@
     ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias
 
     ###
-    # Locating paths.
+    # Locating content and paths.
     root = rev-parse --show-toplevel
+    find-file = "!f() { git ls-files | egrep "$1"; }; f"
+    find-string = log --diff-filter=M --patch -S
+    when-rm = log --diff-filter=D --summary --
+    when-add = log --diff-filter=A --name-status
+    grp = grep --break --heading --line-number
 
     ###
     # Finding refspecs.
