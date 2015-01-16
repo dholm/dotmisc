@@ -101,16 +101,16 @@
     ###
     # Reviewing history.
     log-new = log ORIG_HEAD..
-    logb = log --first-parent
-    logb-new = log --first-parent ORIG_HEAD..
-    logg = log --graph --decorate --abbrev-commit --date=relative
-    logg-new = log --graph --decorate --abbrev-commit --date=relative ORIG_HEAD..
-    logs = log --graph --decorate --abbrev-commit --date=relative --stat
-    logs-new = log ORIG_HEAD.. --stat --no-merges
-    logl = log --graph --decorate --format=full --stat
-    logl-new = log ORIG_HEAD.. --graph --decorate --format=full --stat --no-merges
-    logp = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
-    logp-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
+    log-branch = log --first-parent
+    log-branch-new = log --first-parent ORIG_HEAD..
+    log-graph = log --graph --decorate --abbrev-commit --date=relative
+    log-graph-new = log --graph --decorate --abbrev-commit --date=relative ORIG_HEAD..
+    log-stat = log --graph --decorate --abbrev-commit --date=relative --stat
+    log-stat-new = log ORIG_HEAD.. --stat --no-merges
+    log-long = log --graph --decorate --format=full --stat
+    log-long-new = log ORIG_HEAD.. --graph --decorate --format=full --stat --no-merges
+    log-patch = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
+    log-patch-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
     ##
