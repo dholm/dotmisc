@@ -116,10 +116,11 @@
 
     ##
     # Common commands that ignore changes to whitespace.
-    shw = show --ignore-all-space
-    dff = diff --ignore-all-space
-    mrg = merge -Xignore-space-at-eol
-    rbs = rebase -Xignore-space-at-eol
+    show-nows = show --ignore-all-space
+    diff-nows = diff --ignore-all-space
+    merge-nows = merge -Xignore-space-at-eol
+    rebase-nows = rebase -Xignore-space-at-eol
+    format-patch-nows = format-patch --ignore-all-space
 
     ###
     # Manipulating file states.
