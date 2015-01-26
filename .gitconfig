@@ -1,6 +1,7 @@
 [color]
     ui = auto
     diff = auto
+    interactive = auto
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -65,7 +66,7 @@
 [alias]
     ###
     # Help commands.
-    ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias
+    ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias | sort
 
     ###
     # Locating content and paths.
@@ -81,6 +82,10 @@
 
     ###
     # Reviewing changes.
+    diff-word = diff -M -p --stat -w --word-diff=color
+    show-word = show -M -p --stat -w --word-diff=color
+    diff-char = diff -M -p --stat -w --word-diff=color --word-diff-regex=.
+    show-char = show -M -p --stat -w --word-diff=color --word-diff-regex=.
     diff-intercommit = !bash -c 'interdiff <(git show $1) <(git show $2) | less -FRS' -
     diff-func = !bash -c \"git show \\\"\\$0:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp1 && git show \\\"\\$1:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp2 && git diff --no-index .tmp1 .tmp2\"
     diff-sort = !bash -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
@@ -89,6 +94,7 @@
     ###
     # Publishing changes.
     mbox-send = "!bash -c 'eval f=\\$$#; eval set -- `seq -f\"\\$%.0f\" 1 $(($#-1))`; mkdir .mboxsplit || exit; trap \"st=\\$?; rm -rf .mboxsplit; exit \\$?\" 0 INT TERM; if last=`git mailsplit -d4 -o.mboxsplit -b -- \"$f\"`; then echo Found $last messages in \"$f\"; git send-email \"$@\" .mboxsplit; fi' -"
+    diff-to-upstream = !git log --oneline --first-parent --reverse @{u}... && git diff 8.x... > $1 && git diff @{u} > interdiff.txt && echo
 
     ###
     # Finding refspecs.
@@ -134,10 +140,21 @@
     unassume-all = !git assumed | xargs git update-index --no-assume-unchanged
     record = !bash -c '(git add -p -- $@ && git commit) || git reset' --
     untrack = rm --cache --
+    ignore = !bash -c '([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore'
+    sync-rm = !git ls-files -z --deleted | xargs -0 git rm
+
+    ###
+    # Committing changes.
+    amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
 
     ###
     # Manipulating branches.
+    rm-branch = !git branch -d $1 && git push origin --delete
     branch-done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done/{}; }; f"
+
+    ###
+    # Working with tags.
+    ls-tags = !git for-each-ref --sort=subject refs/tags | awk '{print $2, $3}' | sed 's,tag refs/tags/, * ,' | sed 's,commit refs/tags/,   ,'
 
     ###
     # Manipulating submodules.
