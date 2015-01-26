@@ -75,15 +75,15 @@
     when-rm = log --diff-filter=D --summary --
     when-add = log --diff-filter=A --name-status
     grp = grep --break --heading --line-number
-    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whois = !bash -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     whereis = log --source --all -S
 
     ###
     # Reviewing changes.
-    diff-intercommit = !sh -c 'interdiff <(git show $1) <(git show $2) | less -FRS' -
-    diff-func = !sh -c \"git show \\\"\\$0:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp1 && git show \\\"\\$1:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp2 && git diff --no-index .tmp1 .tmp2\"
-    diff-sort = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
+    diff-intercommit = !bash -c 'interdiff <(git show $1) <(git show $2) | less -FRS' -
+    diff-func = !bash -c \"git show \\\"\\$0:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp1 && git show \\\"\\$1:\\$2\\\" | sed -n \\\"/^[^ \\t].*\\$3[ \\t]*(/,/^}/p\\\" > .tmp2 && git diff --no-index .tmp1 .tmp2\"
+    diff-sort = !bash -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
     diff-fork = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
 
     ###
@@ -94,7 +94,7 @@
     # Finding refspecs.
     head = rev-list -n1 --abbrev-commit HEAD
     latest-tag = describe --tags --abbrev=0
-    find-hash = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+    find-hash = "!bash -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
     oneline ="!_() { $(test $# -eq 0 && echo xargs -L1) git log --no-walk --decorate --oneline \"$@\"; }; _"
     tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi; }; _"
     hash-empty-tree = hash-object -t tree /dev/null
@@ -132,7 +132,7 @@
     assume-all = !git st -s | awk {'print $2'} | xargs git assume
     unassume = update-index --no-assume-unchanged
     unassume-all = !git assumed | xargs git update-index --no-assume-unchanged
-    record = !sh -c '(git add -p -- $@ && git commit) || git reset' --
+    record = !bash -c '(git add -p -- $@ && git commit) || git reset' --
     untrack = rm --cache --
 
     ###
@@ -141,7 +141,7 @@
 
     ###
     # Manipulating submodules.
-    checkout-recurse = !sh -c 'git checkout $1 && git submodule update --recursive' -
+    checkout-recurse = !bash -c 'git checkout $1 && git submodule update --recursive' -
 
     ###
     # Managing remotes.
