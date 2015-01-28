@@ -184,6 +184,10 @@
     # Server commands.
     serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
+    ###
+    # Internal commands.
+    debug = !GIT_PAGER= gdb --args git
+
 [include]
     path = .gitconfig.local
 
