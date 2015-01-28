@@ -118,13 +118,13 @@
     log-branch-new = log --first-parent ORIG_HEAD..
     log-graph = log --graph --decorate --abbrev-commit --date=relative
     log-graph-new = log --graph --decorate --abbrev-commit --date=relative ORIG_HEAD..
+    log-graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
     log-stat = log --graph --decorate --abbrev-commit --date=relative --stat
     log-stat-new = log ORIG_HEAD.. --stat --no-merges
     log-long = log --graph --decorate --format=full --stat
     log-long-new = log ORIG_HEAD.. --graph --decorate --format=full --stat --no-merges
     log-patch = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
     log-patch-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
-    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
     contributors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
     ##
