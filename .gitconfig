@@ -187,6 +187,10 @@
     github-pull-request = !bash -c 'git fetch origin pull/${1}/head:pr/${1} && git checkout pr/${1}' -
 
     ###
+    # Enclosed (subshelled) repositories.
+    deactivate = !bash -c 'kill -9 $(ps -o ppid= -p ${PPID})'
+
+    ###
     # Server commands.
     serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
