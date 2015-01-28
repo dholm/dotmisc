@@ -125,6 +125,7 @@
     log-patch = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
     log-patch-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+    contributors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
     ##
     # Common commands that ignore changes to whitespace.
