@@ -137,6 +137,18 @@
     show-nows = show --ignore-all-space
 
     ###
+    # Listing files based on state.
+    ls = "!git status -suno"
+    ls-modified = "!git status --porcelain -uno | awk 'match($1, /M/) {print $2}'"
+    ls-added = "!git status --porcelain -uno | awk 'match($1, /A/) {print $2}'"
+    ls-deleted = "!git status --porcelain -uno | awk 'match($1, /D/) {print $2}'"
+    ls-renamed = "!git status --porcelain -uno | awk 'match($1, /R/) {print $2}'"
+    ls-copied = "!git status --porcelain -uno | awk 'match($1, /C/) {print $2}'"
+    ls-updated = "!git status --porcelain -uno | awk 'match($1, /U/) {print $2}'"
+    ls-staged = "!git status --porcelain -uno | grep -P '^[MA]' | awk '{print $2 }'"
+    ls-untracked = "!git status --porcelain -uall | awk '$1 == \"??\" {print $2}'"
+
+    ###
     # Manipulating file states.
     unmerge = checkout -m
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; ${EDITOR} `f`"
