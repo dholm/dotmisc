@@ -122,11 +122,12 @@
 
     ##
     # Common commands that ignore changes to whitespace.
-    show-nows = show --ignore-all-space
+    cherry-pick-nows = cherry-pick -Xignore-all-space
     diff-nows = diff --ignore-all-space
-    merge-nows = merge -Xignore-space-at-eol
-    rebase-nows = rebase -Xignore-space-at-eol
     format-patch-nows = format-patch --ignore-all-space
+    merge-nows = merge -Xignore-all-space
+    rebase-nows = rebase -Xignore-all-space
+    show-nows = show --ignore-all-space
 
     ###
     # Manipulating file states.
