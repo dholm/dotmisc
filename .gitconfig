@@ -165,7 +165,7 @@
 
     ###
     # Committing changes.
-    amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+    fixup = commit --amend --reuse-message HEAD
 
     ###
     # Manipulating branches.
