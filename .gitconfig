@@ -97,6 +97,12 @@
     diff-to-upstream = !git log --oneline --first-parent --reverse @{u}... && git diff 8.x... > $1 && git diff @{u} > interdiff.txt && echo
 
     ###
+    # Updating repository.
+    checkout-recurse = !bash -c 'git checkout $1 && git submodule update --recursive' -
+    pull-unclean = "!bash -c 'git diff-index HEAD --quiet --exit-code; stashed=$?; if [ \"${stashed}\" -eq \"1\" ]; then git stash; fi; git pull ${@}; if [ \"${stashed}\" -eq \"1\" ]; then git stash pop; fi;' -"
+    submodule-update = !git submodule sync && git submodule update --init
+
+    ###
     # Finding refspecs.
     head = rev-list -n1 --abbrev-commit HEAD
     latest-tag = describe --tags --abbrev=0
@@ -156,10 +162,6 @@
     ###
     # Working with tags.
     ls-tags = !git for-each-ref --sort=subject refs/tags | awk '{print $2, $3}' | sed 's,tag refs/tags/, * ,' | sed 's,commit refs/tags/,   ,'
-
-    ###
-    # Manipulating submodules.
-    checkout-recurse = !bash -c 'git checkout $1 && git submodule update --recursive' -
 
     ###
     # Managing remotes.
