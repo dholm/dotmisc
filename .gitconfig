@@ -182,6 +182,11 @@
     remote-prune-all = !git remote | xargs -n 1 git remote prune
 
     ###
+    # GitHub helpers.
+    github-open = "!f() { url=$(echo $(git config --get remote.origin.url) | perl -pe \"s|git\\@github\\.com:|https://github.com/|\"); if [ "$(uname)" = "Darwin" ]; then open ${url}; else xdg-open ${url}; fi; }; f"
+    github-pull-request = !bash -c 'git fetch origin pull/${1}/head:pr/${1} && git checkout pr/${1}' -
+
+    ###
     # Server commands.
     serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
