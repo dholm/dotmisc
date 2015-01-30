@@ -73,9 +73,9 @@
     root = rev-parse --show-toplevel
     find-file = "!f() { git ls-files | egrep "$1"; }; f"
     find-string = log --diff-filter=M --patch -S
+    grep-verbose = grep --break --heading --line-number
     when-rm = log --diff-filter=D --summary --
     when-add = log --diff-filter=A --name-status
-    grp = grep --break --heading --line-number
     whois = !bash -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     whereis = log --source --all -S
