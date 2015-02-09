@@ -23,6 +23,11 @@ cscope.out
 
 
 ###
+# Compilation database
+compile_commands.json
+
+
+###
 # GNU GLOBAL
 GPATH
 GRTAGS
