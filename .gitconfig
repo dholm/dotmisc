@@ -99,6 +99,7 @@
     ###
     # Updating repository.
     checkout-recurse = !bash -c 'git checkout $1 && git submodule update --recursive' -
+    clean-all = clean --force -x -d
     fetch-all = fetch --all --prune --tags --recurse-submodules --progress
     pull-unclean = "!bash -c 'git diff-index HEAD --quiet --exit-code; stashed=$?; if [ \"${stashed}\" -eq \"1\" ]; then git stash; fi; git pull ${@}; if [ \"${stashed}\" -eq \"1\" ]; then git stash pop; fi;' -"
     submodule-update = !git submodule sync && git submodule update --init
