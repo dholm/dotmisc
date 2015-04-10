@@ -191,6 +191,10 @@
     github-pull-request = !bash -c 'git fetch origin pull/${1}/head:pr/${1} && git checkout pr/${1}' -
 
     ###
+    # Gerrit helpers.
+    gerrit-review = !bash -c 'git fetch origin refs/changes/"${1:${#1}-2}"/$1/$2 && git checkout -b review/$1/$2 FETCH_HEAD' -
+
+    ###
     # Enclosed (subshelled) repositories.
     deactivate = !bash -c 'kill -9 $(ps -o ppid= -p ${PPID})'
 
