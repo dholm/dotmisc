@@ -67,6 +67,7 @@
     ###
     # Help commands.
     ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias | sort
+    upstream = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
 
     ###
     # Locating content and paths.
