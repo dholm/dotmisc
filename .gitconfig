@@ -167,10 +167,12 @@
     untrack = rm --cache --
     ignore = !bash -c '([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore'
     sync-rm = !git ls-files -z --deleted | xargs -0 git rm
+    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
     ###
     # Committing changes.
     fixup = commit --amend --reuse-message HEAD
+    undo = reset HEAD~1 --mixed
 
     ###
     # Manipulating branches.
