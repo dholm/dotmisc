@@ -67,7 +67,6 @@
     ###
     # Help commands.
     ls-alias = !git config -l | grep alias | cut -c 7- | sed -e s/=/¤/ | column -t -s ¤ | grep -v ls-alias | sort
-    upstream = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
 
     ###
     # Locating content and paths.
@@ -113,6 +112,8 @@
     oneline ="!_() { $(test $# -eq 0 && echo xargs -L1) git log --no-walk --decorate --oneline \"$@\"; }; _"
     tips = "!_() { t=$(git rev-list --no-merges --max-count=1 \"$@\"); if test -n \"$t\"; then echo $t; _ \"$@\" ^$t; fi; }; _"
     hash-empty-tree = hash-object -t tree /dev/null
+    upstream = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
+    current-branch = name-rev --name-only HEAD
 
     ###
     # Reviewing history.
@@ -196,6 +197,9 @@
     ###
     # Gerrit helpers.
     gerrit-review = !bash -c 'git fetch origin refs/changes/"${1:${#1}-2}"/$1/$2 && git checkout -b review/$1/$2 FETCH_HEAD' -
+    gerrit-push = "!f() { local branch=$(git current-branch); git push -u ${2:-origin} ${3:-HEAD}:$(git config branch.${branch}.merge | sed -e "s@refs/heads/@refs/${1}/@")/${4:-${branch}}; }; f"
+    gerrit-publish = !git gerrit-push for
+    gerrit-draft = !git gerrit-push drafts
 
     ###
     # Enclosed (subshelled) repositories.
