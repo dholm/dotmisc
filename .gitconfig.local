@@ -1,0 +1,12 @@
+# Sample local gitconfig.
+
+[user]
+    email = yourname@email.com
+    name = Your Name
+
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = yourname@gmail.com
+    smtpServerPort = 587
+    smtpPass = yourapppassword
