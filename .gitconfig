@@ -171,6 +171,12 @@
     wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
     ###
+    # Manipulating history.
+    extract-directory = "!f() { git filter-branch --subdirectory-filter ${1} -- ${2:-master}; }; f"
+    rewrite-root = "!f() { git filter-branch --prune-empty --tree-filter \"if [ ! -e ${1} ]; then mkdir -p ${1}; git ls-tree --name-only \\${GIT_COMMIT} | xargs -I files mv files ${1}; fi\"; }; f"
+    rewrite-rm-unless = "!f() { git filter-branch -f --prune-empty --index-filter \"git rm --cached --ignore-unmatch \\$(git ls-files | grep -v '${1}')\"; }; f"
+
+    ###
     # Committing changes.
     fixup = commit --amend --reuse-message HEAD
     undo = reset HEAD~1 --mixed
