@@ -49,8 +49,6 @@
 [advice]
     statusHints = false
 
-[difftool]
-    prompt = no
 [difftool "emacs"]
     cmd = emacs -Q -nw -l ~/.emacs.d/basic.el --difftool $LOCAL $REMOTE
 [diff]
@@ -58,7 +56,8 @@
     renames = true
     renamelimit = 3000
 [difftool]
-    prompt = false
+    prompt = no
+    tool = "emacs"
 
 [rerere]
     enabled = true
