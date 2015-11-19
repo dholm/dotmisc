@@ -19,19 +19,6 @@
 [grep]
     extendedRegexp = true
 
-[mergetool]
-    prompt = no
-[mergetool "vim"]
-    cmd = vim -f -c 'Gdiff' $MERGED
-    keepbackup = false
-[mergetool "emacs"]
-    cmd = emacs -Q -nw -l ~/.emacs.d/basic.el --mergetool $LOCAL $REMOTE $BASE $MERGED
-[merge]
-    summary = true
-    verbosity = 1
-    tool = "emacs"
-    stat = true
-
 [branch]
     autosetupmerge = true
 
@@ -49,15 +36,28 @@
 [advice]
     statusHints = false
 
-[difftool "emacs"]
-    cmd = emacs -Q -nw -l ~/.emacs.d/basic.el --difftool $LOCAL $REMOTE
 [diff]
     mnemonicprefix = true
-    renames = true
-    renamelimit = 3000
+    renames = copies
+    renamelimit = 999999
+[difftool "emacs"]
+    cmd = emacs -Q -nw -l ~/.emacs.d/basic.el --difftool $LOCAL $REMOTE
 [difftool]
     prompt = no
     tool = "emacs"
+
+[merge]
+    summary = true
+    verbosity = 1
+    tool = "emacs"
+    stat = true
+[mergetool]
+    prompt = no
+[mergetool "vim"]
+    cmd = vim -f -c 'Gdiff' $MERGED
+    keepbackup = false
+[mergetool "emacs"]
+    cmd = emacs -Q -nw -l ~/.emacs.d/basic.el --mergetool $LOCAL $REMOTE $BASE $MERGED
 
 [rerere]
     enabled = true
