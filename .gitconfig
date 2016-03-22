@@ -1,6 +1,8 @@
 [color]
     ui = auto
     diff = auto
+    status = auto
+    branch = auto
     interactive = auto
 [color "branch"]
     current = yellow reverse
@@ -12,6 +14,7 @@
     frag = magenta bold
     old = red
     new = green
+    whitespace = red reverse
 
 [core]
     pager = "less -RXMi"
