@@ -13,8 +13,19 @@
     old = red
     new = green
 
+[core]
+    pager = "less -RXMi"
+    autocrlf = false
+    editor = "vim --noplugin"
+    whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
+    preloadindex = true
+    excludesfile = ~/.gitignore.core
+
 [format]
     pretty = format:%C(blue)%ad%C(reset) %x09%C(yellow)%h%C(green)%d%C(reset) %C(blue)%s %C(magenta) [%an]%C(reset)
+
+[advice]
+    statusHints = false
 
 [grep]
     extendedRegexp = true
@@ -24,17 +35,6 @@
 
 [push]
     default = tracking
-
-[core]
-    pager = "less -RXMi"
-    autocrlf = false
-    editor = "vim --noplugin"
-    whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
-    preloadindex = true
-    excludesfile = ~/.gitignore.core
-
-[advice]
-    statusHints = false
 
 [diff]
     mnemonicprefix = true
@@ -128,6 +128,7 @@
     log-long-new = log ORIG_HEAD.. --graph --decorate --format=full --stat --no-merges
     log-patch = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
     log-patch-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
+    reflog-pretty = reflog --pretty='%C(blue)%cd%C(reset) %C(yellow)%h%C(reset) %C(green)%gd%C(reset) %C(blue)%gs%C(reset)'
     contributors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
     ##
