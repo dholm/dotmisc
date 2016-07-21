@@ -202,6 +202,10 @@
     rm-branch = !git branch -d $1 && git push origin --delete
 
     ###
+    # Manipulating files.
+    grep-rename = "!f() { git grep -l \"${1}\" ${GIT_PREFIX}${3:-} | xargs sed -i '' -e \"s/${1}/${2}/g\"; }; f"
+
+    ###
     # Working with tags.
     ls-tags = !git for-each-ref --sort=subject refs/tags | awk '{print $2, $3}' | sed 's,tag refs/tags/, * ,' | sed 's,commit refs/tags/,   ,'
 
