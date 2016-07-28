@@ -215,6 +215,10 @@
     zip = "!f() { local ref=${2:-$(git head)}; git archive --format zip --output ${1:-${ref}.zip} ${ref}; }; f"
 
     ###
+    # Importing.
+    sourceforge-cvsimport = "!f() { rsync -av rsync://${2:-${1}.cvs.sourceforge.net/cvsroot/${1}}/\\* ${1}-cvs && git cvsimport -v -a -k -d $(pwd)/${1}-cvs -C ${1} ${1}; }; f"
+
+    ###
     # GitHub helpers.
     github-open = "!f() { url=$(echo $(git config --get remote.origin.url) | perl -pe \"s|git\\@github\\.com:|https://github.com/|\"); if [ "$(uname)" = "Darwin" ]; then open ${url}; else xdg-open ${url}; fi; }; f"
     github-pull-request = !bash -c 'git fetch origin pull/${1}/head:pr/${1} && git checkout pr/${1}' -
