@@ -143,7 +143,7 @@
     log-patch = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w
     log-patch-new = log --graph --decorate --abbrev-commit --date=relative --patch --cc -w ORIG_HEAD..
     reflog-pretty = reflog --pretty='%C(blue)%cd%C(reset) %C(yellow)%h%C(reset) %C(green)%gd%C(reset) %C(blue)%gs%C(reset)'
-    contributors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+    contributors = "!f() { git log --pretty=format:%aN ${1:-} | sort | uniq -c | sort -rn; }; f"
 
     ##
     # Common commands that ignore changes to whitespace.
