@@ -194,7 +194,9 @@
     ###
     # Committing changes.
     fixup = commit --amend --reuse-message HEAD
-    undo = reset HEAD~1 --mixed
+    undo = reset --mixed HEAD~1
+    uncommit = reset --soft HEAD~1
+    recommit = commit --reuse-message ORIG_HEAD
 
     ###
     # Manipulating branches.
