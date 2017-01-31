@@ -220,6 +220,7 @@
 
     ###
     # Archiving.
+    tar = "!f() { local ref=${2:-$(git head)}; git archive --format tar --output ${1:-${ref}.tar} ${ref}; }; f"
     tar-xz = "!f() { local ref=${2:-$(git head)}; git archive ${ref} | xz >${1:-${ref}.tar.xz}; }; f"
     zip = "!f() { local ref=${2:-$(git head)}; git archive --format zip --output ${1:-${ref}.zip} ${ref}; }; f"
 
