@@ -30,6 +30,9 @@
 [advice]
     statusHints = false
 
+[log]
+    follow = true
+
 [grep]
     extendedRegexp = true
 
