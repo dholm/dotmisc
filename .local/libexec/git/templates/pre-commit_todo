@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. "$(git --exec-path)/git-sh-setup"
+
+git-diff-index -p -M --cached HEAD -- | grep '^+' |
+grep -E 'TODO|FIXME' && die Blocking commit because string TODO/FIXME detected in patch
+:

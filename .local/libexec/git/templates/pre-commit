@@ -1,0 +1,9 @@
+#!/bin/sh
+
+path_n=$(dirname "${0}")
+s_name=$(basename "${0}")
+shift
+
+for hook in ${path_n}/${s_name}_*; do
+   ${hook} ${*} || exit ${?}
+done
