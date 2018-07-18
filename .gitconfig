@@ -97,7 +97,8 @@
     whois = !bash -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     whereis = log --source --all -S
-    follow = log --patch --find-renames --follow --stat --
+    follow-author = "!f() { local author="$1"; shift; git log --patch --stat --author="${author}" -- "$*"; }; f"
+    follow-path = log --patch --find-renames --follow --stat --
 
     ###
     # Reviewing changes.
