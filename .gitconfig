@@ -210,7 +210,7 @@
     ###
     # Manipulating branches.
     branch-done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done/{}; }; f"
-    rm-delivered = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    rm-delivered = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
     rm-branch = !git branch -d $1 && git push origin --delete
 
     ###
