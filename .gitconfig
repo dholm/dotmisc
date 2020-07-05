@@ -99,6 +99,7 @@
     whereis = log --source --all -S
     follow-author = "!f() { local author="$1"; shift; git log --patch --stat --author="${author}" -- "$*"; }; f"
     follow-path = log --patch --find-renames --follow --stat --
+    stash-grep = stash list -p -i -G
 
     ###
     # Reviewing changes.
