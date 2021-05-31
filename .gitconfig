@@ -99,7 +99,7 @@
     whereis = log --source --all -S
     follow-author = "!f() { local author="$1"; shift; git log --patch --stat --author="${author}" -- "$*"; }; f"
     follow-file = log --patch --find-renames --follow --stat --
-    follow-paths = whatchanged -M5 --follow --pretty=format: --name-only
+    follow-paths = "!f() { git whatchanged -M5 --follow --pretty=format: --name-only "$*" | grep -Ev '^$' | uniq; }; f"
     stash-grep = stash list -p -i -G
 
     ###
