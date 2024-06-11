@@ -1,6 +1,9 @@
 [init]
     templatedir = ~/.local/libexec/git/templates
 
+[feature]
+    manyFiles = true
+
 [color]
     ui = auto
     diff = auto
