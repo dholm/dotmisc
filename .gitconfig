@@ -220,7 +220,8 @@
 
     ###
     # Manipulating files.
-    grep-rename = "!f() { git grep -Gl \"${1}\" ${GIT_PREFIX}${3:-} | xargs sed -i '' -e \"s/${1}/${2}/g\"; }; f"
+    grep-rename = "!f() { git grep -Pl \"${1}\" ${GIT_PREFIX}${3:-} | xargs perl -pi -e \"s/${1}/${2}/g\"; }; f"
+    grep-rename-sed = "!f() { git grep -Gl \"${1}\" ${GIT_PREFIX}${3:-} | xargs sed -i '' -e \"s/${1}/${2}/g\"; }; f"
 
     ###
     # Working with tags.
